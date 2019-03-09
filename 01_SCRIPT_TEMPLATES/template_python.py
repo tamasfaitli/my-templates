@@ -17,7 +17,6 @@ HELP_MESSAGE = '''
 import os
 import sys
 import time
-import pbd
 #import subprocess
 #import re
 #import unittest
@@ -31,7 +30,7 @@ CONF_DEBUG              = False
 #   ARGUMENTS                                                                                                   #
 #################################################################################################################
 # input arguments
-arguments_with_options  = sys.argv
+arguments_with_options  = sys.argv[1:] # passing on first element since it is always the path
 arguments               = [arg[:arg.find(':')] if ':' in arg else arg for arg in arguments_with_options]
 # arguments separated by functionality
 arg_debug               = ['-debug','-d']
@@ -51,7 +50,6 @@ if any(arg in arg_help for arg in arguments):
 if any(arg in arg_debug for arg in arguments):
     print 'Debug mode is activated!'
     CONF_DEBUG          = True
-    pbd.set_trace()
 
 #################################################################################################################
 #   PARAMETERS                                                                                                  #
