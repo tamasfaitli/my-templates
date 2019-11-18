@@ -43,4 +43,6 @@
 # LaTex
 *.tif
 *.bib
-
+*.aux
+*.synctex.gz
+*texput.log
