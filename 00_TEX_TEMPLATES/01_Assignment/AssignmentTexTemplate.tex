@@ -1,0 +1,121 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[margin=25mm]{geometry}
+
+%Use PDFLATEX for compilation
+%\usepackage[magyar]{babel}%It has to be used for texts in Hungarian
+\usepackage[utf8]{inputenc}%Use UTF8 character encodingszabályozási módszer ismertetése
+\usepackage{t1enc}% automatic hyphenation of words with accented characters
+\usepackage{soul}% For making strike through texte in the form  \st{blabla}
+%Beginning of own extension
+\usepackage{graphicx} %for the insertion of graphical files
+%\usepackage{epstopdf}%Obsolete, normally automatically converts EPS format to PDF for pictures
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage{tikz}
+\usepackage{url}
+\urlstyle{same}
+
+\usepackage{verbatim}%An environment that is applicable for showing software code excerpts
+% \begin{verbatim} .... \end{verbatim} environment
+\usetikzlibrary{arrows,shapes}
+
+% Definition of special mathemetical characters used by SPRINGER LNCS style file
+\def\bbbr{{\rm I\!R}} %reelle Zahlen
+\def\bbbm{{\rm I\!M}}
+\def\bbbn{{\rm I\!N}} %natuerliche Zahlen
+\def\bbbf{{\rm I\!F}}
+\def\bbbh{{\rm I\!H}}
+\def\bbbk{{\rm I\!K}}
+\def\bbbp{{\rm I\!P}}
+\def\bbbone{{\mathchoice {\rm 1\mskip-4mu l} {\rm 1\mskip-4mu l}
+		{\rm 1\mskip-4.5mu l} {\rm 1\mskip-5mu l}}}
+\def\bbbc{{\mathchoice {\setbox0=\hbox{$\displaystyle\rm C$}\hbox{\hbox
+				to0pt{\kern0.4\wd0\vrule height0.9\ht0\hss}\box0}}
+		{\setbox0=\hbox{$\textstyle\rm C$}\hbox{\hbox
+				to0pt{\kern0.4\wd0\vrule height0.9\ht0\hss}\box0}}
+		{\setbox0=\hbox{$\scriptstyle\rm C$}\hbox{\hbox
+				to0pt{\kern0.4\wd0\vrule height0.9\ht0\hss}\box0}}
+		{\setbox0=\hbox{$\scriptscriptstyle\rm C$}\hbox{\hbox
+				to0pt{\kern0.4\wd0\vrule height0.9\ht0\hss}\box0}}}}
+\def\bbbq{{\mathchoice {\setbox0=\hbox{$\displaystyle\rm
+				Q$}\hbox{\raise
+				0.15\ht0\hbox to0pt{\kern0.4\wd0\vrule height0.8\ht0\hss}\box0}}
+		{\setbox0=\hbox{$\textstyle\rm Q$}\hbox{\raise
+				0.15\ht0\hbox to0pt{\kern0.4\wd0\vrule height0.8\ht0\hss}\box0}}
+		{\setbox0=\hbox{$\scriptstyle\rm Q$}\hbox{\raise
+				0.15\ht0\hbox to0pt{\kern0.4\wd0\vrule height0.7\ht0\hss}\box0}}
+		{\setbox0=\hbox{$\scriptscriptstyle\rm Q$}\hbox{\raise
+				0.15\ht0\hbox to0pt{\kern0.4\wd0\vrule height0.7\ht0\hss}\box0}}}}
+\def\bbbt{{\mathchoice {\setbox0=\hbox{$\displaystyle\rm
+				T$}\hbox{\hbox to0pt{\kern0.3\wd0\vrule height0.9\ht0\hss}\box0}}
+		{\setbox0=\hbox{$\textstyle\rm T$}\hbox{\hbox
+				to0pt{\kern0.3\wd0\vrule height0.9\ht0\hss}\box0}}
+		{\setbox0=\hbox{$\scriptstyle\rm T$}\hbox{\hbox
+				to0pt{\kern0.3\wd0\vrule height0.9\ht0\hss}\box0}}
+		{\setbox0=\hbox{$\scriptscriptstyle\rm T$}\hbox{\hbox
+				to0pt{\kern0.3\wd0\vrule height0.9\ht0\hss}\box0}}}}
+\def\bbbs{{\mathchoice
+		{\setbox0=\hbox{$\displaystyle     \rm S$}\hbox{\raise0.5\ht0\hbox
+				to0pt{\kern0.35\wd0\vrule height0.45\ht0\hss}\hbox
+				to0pt{\kern0.55\wd0\vrule height0.5\ht0\hss}\box0}}
+		{\setbox0=\hbox{$\textstyle        \rm S$}\hbox{\raise0.5\ht0\hbox
+				to0pt{\kern0.35\wd0\vrule height0.45\ht0\hss}\hbox
+				to0pt{\kern0.55\wd0\vrule height0.5\ht0\hss}\box0}}
+		{\setbox0=\hbox{$\scriptstyle      \rm S$}\hbox{\raise0.5\ht0\hbox
+				to0pt{\kern0.35\wd0\vrule height0.45\ht0\hss}\raise0.05\ht0\hbox
+				to0pt{\kern0.5\wd0\vrule height0.45\ht0\hss}\box0}}
+		{\setbox0=\hbox{$\scriptscriptstyle\rm S$}\hbox{\raise0.5\ht0\hbox
+				to0pt{\kern0.4\wd0\vrule height0.45\ht0\hss}\raise0.05\ht0\hbox
+				to0pt{\kern0.55\wd0\vrule height0.45\ht0\hss}\box0}}}}
+\def\bbbz{{\mathchoice {\hbox{$\mathsf\textstyle Z\kern-0.4em Z$}}
+		{\hbox{$\mathsf\textstyle Z\kern-0.4em Z$}}
+		{\hbox{$\mathsf\scriptstyle Z\kern-0.3em Z$}}
+		{\hbox{$\mathsf\scriptscriptstyle Z\kern-0.2em Z$}}}}
+\usepackage{float}% \begin{figure}[H] kepps the figures within the sections
+\usepackage{cuted}% Allows to leave the multile column structure for inserting long equations by the use of the environment
+%a \begin{strip} ... \end{strip} 
+
+
+
+\usepackage[T1]{fontenc}
+\usepackage{beramono}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames]{xcolor}
+
+
+\usepackage{rotating} %Rotating pictures
+
+
+%End of own extension
+\usepackage{amsmath,amsthm,amsfonts,amssymb}%For the use of the usual mathematical symbols
+
+\newcommand{\doublerule}[1][.4pt]{%
+	\noindent
+	\makebox[0pt][l]{\rule[.7ex]{3\linewidth}{#1}}%
+	\rule[.3ex]{3\linewidth}{#1}}
+
+% This is used to draw vertical line in mathematical equations to write something on the bottom right index
+\newcommand\at[2]{\left.#1\right|_{#2}}
+
+%\usepackage{euler} % for the fonts \mathscr{ABCD}
+%\usepackage{mathptmx} % for the fonts \mathcal{ABCD}
+%\usepackage{eufrak} %for the fonts \mathfrak{ABCD ... efg}
+
+\usepackage{subfigure}
+\usepackage[margin=25mm]{geometry}%Setting the structure of the page
+
+%opening
+\title{}
+
+\author{Tamas Faitli}
+\begin{document}	
+\maketitle
+
+% Text starts here
+%\section*{Exercise 1.}
+%\subsection*{a, Describing subtask}
+
+
+\end{document}
