@@ -40,15 +40,15 @@ arg_temp                = ['-init']
 arg_supported           = arg_debug + arg_help + arg_temp
 # check whether all argument is supported or not
 if any(arg not in arg_supported for arg in arguments):
-    print 'Invalid argument! See supported arguments passing -help .'
+    print('Invalid argument! See supported arguments passing -help .')
     exit(1)
 # check if any help argument is passed
 if any(arg in arg_help for arg in arguments):
-    print HELP_MESSAGE
+    print(HELP_MESSAGE)
     exit(0)
 # check if any debug argument is passed
 if any(arg in arg_debug for arg in arguments):
-    print 'Debug mode is activated!'
+    print('Debug mode is activated!')
     CONF_DEBUG          = True
 
 #################################################################################################################
